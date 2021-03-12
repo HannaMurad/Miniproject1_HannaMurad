@@ -12,6 +12,11 @@ namespace Vecka03Miniproject01
     {
         static void Main(string[] args)
         {
+            Location allLocations = Location.GreatBritain | Location.Sweden | Location.UnitedStates;
+            InputAndValidation.ReadAndValidate(out Location output, "Please write your location: " + allLocations);
+            Console.WriteLine(output);
+
+            /*
             var assets = new List<Asset>();
             //GetInput(assets);
 
@@ -64,7 +69,9 @@ namespace Vecka03Miniproject01
 
             var sortedAssets = assets.OrderBy(a => a.OfficeLocation).ThenBy(a => a.PurchaseDate).ToList();
             ShowAssets(sortedAssets);
-
+            */
+            
+            ///////////////////////////////////////////////////////////////////////////////////
             //WriteLine(CultureInfo.CurrentCulture.Name);
 
             //CultureInfo[] cltrInfos = CultureInfo.GetCultures(CultureTypes.AllCultures);
@@ -73,17 +80,12 @@ namespace Vecka03Miniproject01
             //    WriteLine(culture.Name);
             //}
             
-
             //XmlDocument doc = new XmlDocument();
             
-
-
-
             //CultureInfo.CurrentCulture = new CultureInfo("en-US");
             //decimal price = 500;
             //CultureInfo.CurrentCulture = new CultureInfo("en-GB");
             //WriteLine(price.ToString("c"));
-            
 
         }
         private static void GetInput(List<Asset> assets)
