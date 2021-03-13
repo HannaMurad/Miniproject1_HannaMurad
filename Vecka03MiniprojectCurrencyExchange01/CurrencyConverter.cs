@@ -82,7 +82,7 @@ namespace Vecka03MiniprojectCurrencyExchange01
         /// <summary>
         /// Get The Exchange Rate Between 2 Currencies
         /// </summary>
-        public static decimal GetExchangeRate(string from, string to, decimal amount = 1D)
+        public static decimal GetExchangeRate(string from, string to, decimal amount = 1M)
         {
             // If currency's are empty abort
             if (from == null || to == null)

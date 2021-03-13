@@ -16,12 +16,12 @@ namespace Vecka03Miniproject01
             AllAssets = new List<Asset>();
         }
 
-        public void AddAsset(Asset asset)
+        public void AddAsset()
         {
             
         }
 
-        public void RemoveAsset(Asset asset)
+        public void RemoveAsset(int assetID)
         {
 
         }

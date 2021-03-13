@@ -16,9 +16,6 @@ namespace Vecka03Miniproject01
             InputAndValidation.ReadAndValidate(out Location output, "Please write your location: " + allLocations);
             Console.WriteLine(output);*/
 
-            
-
-
             /*
             var assets = new List<Asset>();
             //GetInput(assets);
@@ -90,97 +87,6 @@ namespace Vecka03Miniproject01
             //CultureInfo.CurrentCulture = new CultureInfo("en-GB");
             //WriteLine(price.ToString("c"));
 
-        }
-        private static void GetInput(List<Asset> assets)
-        {
-            while(true)
-            {
-                
-                WriteLine("Enter to input asset data, q or quit to exit");
-                string input = ReadLine().Trim().ToLower();
-                if(!string.IsNullOrWhiteSpace(input))
-                    if (input[0] == 'q') break;
-
-                var newAsset = new Asset();
-
-                string data;
-                WriteLine("Enter Hardware Type");
-                data = ReadLine();
-                newAsset.HardwareType = data;
-
-                WriteLine("Enter Model Name");
-                data = ReadLine();
-                newAsset.ModelName = data;
-
-                WriteLine("Enter Purchase Price");
-                data = ReadLine();
-                if (decimal.TryParse(data, out decimal result))
-                {
-                    newAsset.PurchasePrice = result;
-                }
-                else
-                {
-                    WriteLine("not the write format");
-                }
-
-                WriteLine("Enter Purchase Date");
-                data = ReadLine();
-                if (DateTime.TryParse(data, out DateTime date))
-                {
-                    newAsset.PurchaseDate = date;
-                }
-                else
-                {
-                    WriteLine("not the write format");
-                }
-
-                WriteLine("Enter Office Location");
-                data = ReadLine();
-                newAsset.OfficeLocation = data;
-
-                assets.Add(newAsset);
-            }
-
-        }
-        private static void ShowAssets(List<Asset> assets)
-        {
-            foreach (var item in assets)
-            {
-                TimeSpan expirySpan = DateTime.Now - item.PurchaseDate;
-                if (expirySpan.Days >= 1008) Console.ForegroundColor = ConsoleColor.Red;
-                else if (expirySpan.Days >= 935) Console.ForegroundColor = ConsoleColor.Yellow;
-                else Console.ResetColor();
-
-                string toCurrency;
-                decimal toPrice = item.PurchasePrice; 
-                switch (item.OfficeLocation)
-                {
-                    case "Great Britain":
-                        toCurrency = "gbp";
-                        toPrice = Convert.ToDecimal(CurrencyConverter.GetExchangeRate("usd", toCurrency, (float)toPrice));
-                        CultureInfo.CurrentCulture = new CultureInfo("en-GB");
-                        break;
-                    case "Sweden":
-                        toCurrency = "sek";
-                        toPrice = Convert.ToDecimal(CurrencyConverter.GetExchangeRate("usd", toCurrency, (float)toPrice));
-                        CultureInfo.CurrentCulture = new CultureInfo("sv-SE");
-                        break;
-                    case "United States":
-                        CultureInfo.CurrentCulture = new CultureInfo("en-US");
-                        break;
-                }
-                
-
-                WriteLine(
-                      item.HardwareType.PadRight(10)
-                    + item.ModelName.PadRight(10)
-                    + item.PurchaseDate.ToString("d").PadRight(15)
-                    + item.OfficeLocation.PadRight(15)
-                    + toPrice.ToString("c")
-                    ); 
-            }
-        }
-
-        
+        }   
     }
 }

@@ -15,9 +15,9 @@ namespace Vecka03Miniproject01
         public AssetStatus Status { 
             get 
             {
-                if (DateTime.Compare(EquipmentInfo.PurchaseDate.AddMonths(33), DateTime.Now) >= 0)
+                if (DateTime.Compare(EquipmentInfo.PurchaseDate.AddMonths(33), DateTime.Now) <= 0)
                     status = AssetStatus.AlmostDepricated;
-                else if (DateTime.Compare(EquipmentInfo.PurchaseDate.AddMonths(30), DateTime.Now) >= 0)
+                else if (DateTime.Compare(EquipmentInfo.PurchaseDate.AddMonths(30), DateTime.Now) <= 0)
                     status = AssetStatus.SoonDepricated;
                 else status = AssetStatus.New;
 

@@ -42,7 +42,7 @@ namespace Vecka03MiniprojectCurrencyExchange01
             //
 
             // Calls a method to get the exchange rate between 2 currencies
-            float exchangeRate = CurrencyConverter.GetExchangeRate(fromCurrency, toCurrency, amount);
+            decimal exchangeRate = CurrencyConverter.GetExchangeRate(fromCurrency, toCurrency, amount);
             // Print result of currency exchange
             Console.WriteLine("FROM " + amount + " " + fromCurrency.ToUpper() + " TO " + toCurrency.ToUpper() + " = " + exchangeRate);
 
