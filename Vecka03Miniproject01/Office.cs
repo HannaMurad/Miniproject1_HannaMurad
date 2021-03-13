@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Globalization;
 
 namespace Vecka03Miniproject01
 {
@@ -22,6 +23,20 @@ namespace Vecka03Miniproject01
             }
             private set { }     
         }
+        private string cultureName;
+        public string CultureName { 
+            get
+            {
+                cultureName = OfficeLocation switch
+                {
+                    Location.GreatBritain => "en-GB",
+                    Location.Sweden => "sv-SE",
+                    Location.UnitedStates => "en-US",
+                    _ => "en-US",
+                };
+                return cultureName;
+            } 
+            set { } }
         //--------------------- Constructor Chain --------------------------
         public Office() : this(Location.UnitedStates)
         {

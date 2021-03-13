@@ -12,9 +12,10 @@ namespace Vecka03Miniproject01
     {
         static void Main(string[] args)
         {
-            /*Location allLocations = Location.GreatBritain | Location.Sweden | Location.UnitedStates;
-            InputAndValidation.ReadAndValidate(out Location output, "Please write your location: " + allLocations);
-            Console.WriteLine(output);*/
+            var assets = new Assets();
+            assets.ReadAssetsFromConsole();
+            assets.WriteAssetsToConsole();
+
 
             /*
             var assets = new List<Asset>();
@@ -71,22 +72,7 @@ namespace Vecka03Miniproject01
             ShowAssets(sortedAssets);
             */
             
-            ///////////////////////////////////////////////////////////////////////////////////
-            //WriteLine(CultureInfo.CurrentCulture.Name);
-
-            //CultureInfo[] cltrInfos = CultureInfo.GetCultures(CultureTypes.AllCultures);
-            //foreach (var culture in cltrInfos)
-            //{
-            //    WriteLine(culture.Name);
-            //}
             
-            //XmlDocument doc = new XmlDocument();
-            
-            //CultureInfo.CurrentCulture = new CultureInfo("en-US");
-            //decimal price = 500;
-            //CultureInfo.CurrentCulture = new CultureInfo("en-GB");
-            //WriteLine(price.ToString("c"));
-
         }   
     }
 }

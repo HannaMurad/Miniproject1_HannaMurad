@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Globalization;
 using Vecka03MiniprojectCurrencyExchange01;
 
 namespace Vecka03Miniproject01
@@ -47,6 +48,44 @@ namespace Vecka03Miniproject01
         {
             EquipmentInfo = equipmentInfo;
             OfficeInfo = officeInfo;
+        }
+        public Asset(string modelName, DateTime purchaseDate, decimal purchasePrice, Location officeLocation): this()
+        {
+            EquipmentInfo.ModelName = modelName;
+            EquipmentInfo.PurchaseDate = purchaseDate;
+            EquipmentInfo.PurchasePrice = purchasePrice;
+            OfficeInfo.OfficeLocation = officeLocation;
+        }
+        public void ReadAsset()
+        {
+            InputAndValidation.ReadAndValidate(out string modelName, "Enter Model Name");
+            EquipmentInfo.ModelName = modelName;
+
+            InputAndValidation.ReadAndValidate(out DateTime purchaseDate, "Enter Purchase Date");
+            EquipmentInfo.PurchaseDate = purchaseDate;
+
+            InputAndValidation.ReadAndValidate(out decimal purchasePrice, "Enter Purchase Price");
+            EquipmentInfo.PurchasePrice = purchasePrice;
+
+            Location allLocations = Location.GreatBritain | Location.Sweden | Location.UnitedStates;
+            InputAndValidation.ReadAndValidate(out Location officeLocation, "Enter Office Location " + allLocations);
+            OfficeInfo.OfficeLocation = officeLocation;
+        }
+            public void WriteAsset()
+        {
+            if (Status == AssetStatus.AlmostDepricated) Console.ForegroundColor = ConsoleColor.Red;
+            else if (Status == AssetStatus.SoonDepricated) Console.ForegroundColor = ConsoleColor.Yellow;
+
+            CultureInfo.CurrentCulture = new CultureInfo(OfficeInfo.CultureName);
+
+            Console.WriteLine(
+                EquipmentInfo.ModelName.PadRight(15) +
+                EquipmentInfo.PurchaseDate.ToString("d").PadRight(15) +
+                LocalPrice.ToString("c").PadRight(15) +
+                OfficeInfo.OfficeLocation.ToString().PadRight(15)
+                );
+
+            Console.ResetColor();
         }
 
     }
