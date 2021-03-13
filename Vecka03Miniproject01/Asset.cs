@@ -10,7 +10,7 @@ namespace Vecka03Miniproject01
     public class Asset
     {
         //------------- Equipment Related Properties and Fields -------------------
-        public Equipment EquipmentInfo { get; set; }
+        public Equipment EquipmentInfo { get; private set; }
 
         private AssetStatus status;
         public AssetStatus Status { 
@@ -27,7 +27,7 @@ namespace Vecka03Miniproject01
             private set { }
         }
         //------------- Office Related Properties and Fields-----------------------
-        public Office OfficeInfo { get; set; }
+        public Office OfficeInfo { get; private set; }
 
         private decimal localPrice;
         public decimal LocalPrice { 
@@ -39,7 +39,7 @@ namespace Vecka03Miniproject01
             private set { } 
         }
 
-        //----------- Constructor Chain------------------
+        //-------------------------------- Constructors -----------------------------------
         public Asset() : this(new Desktop(), new Office())
         {
 
@@ -49,15 +49,39 @@ namespace Vecka03Miniproject01
             EquipmentInfo = equipmentInfo;
             OfficeInfo = officeInfo;
         }
-        public Asset(string modelName, DateTime purchaseDate, decimal purchasePrice, Location officeLocation): this()
+        public Asset(EquipmentType equipmentType, string modelName, DateTime purchaseDate, decimal purchasePrice, Location officeLocation)
         {
+            EquipmentInfo = CreateEquipment(equipmentType);
+            OfficeInfo = new Office();
+
             EquipmentInfo.ModelName = modelName;
             EquipmentInfo.PurchaseDate = purchaseDate;
             EquipmentInfo.PurchasePrice = purchasePrice;
             OfficeInfo.OfficeLocation = officeLocation;
         }
+        //----------------------------------------------------------------------------------------
+        private Equipment CreateEquipment(EquipmentType equipmentType)
+        {
+            switch (equipmentType)
+            {
+                case EquipmentType.Desktop:
+                    return new Desktop();
+                    
+                case EquipmentType.Laptop:
+                    return new Laptop();
+
+                case EquipmentType.Mobile:
+                    return new Mobile();
+                default: return new Desktop();
+            }
+        }
+        //------------------------ read and write asset to console ------------------------------
         public void ReadAsset()
         {
+            EquipmentType allEquipment = EquipmentType.Desktop | EquipmentType.Laptop | EquipmentType.Mobile;
+            InputAndValidation.ReadAndValidate(out EquipmentType equipmentType, "Enter Equipment type " + allEquipment);
+            EquipmentInfo = CreateEquipment(equipmentType);
+
             InputAndValidation.ReadAndValidate(out string modelName, "Enter Model Name");
             EquipmentInfo.ModelName = modelName;
 
@@ -88,7 +112,6 @@ namespace Vecka03Miniproject01
 
             Console.ResetColor();
         }
-
     }
     [Flags]
     public enum AssetStatus { New = 0b_0000_0001, SoonDepricated = 0b_000_0010, AlmostDepricated = 0b_000_0100 }

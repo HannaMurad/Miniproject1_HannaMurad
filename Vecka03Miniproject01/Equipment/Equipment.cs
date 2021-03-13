@@ -22,7 +22,8 @@ namespace Vecka03Miniproject01
             PurchaseDate = purchaseDate;
             PurchasePrice = purchasePrice;
         }
-        public abstract string GetEquipmentType();
-        
+        public abstract string GetEquipmentType();  
     }
+    [Flags] 
+    public enum EquipmentType { Desktop = 0b_0000_0001, Laptop = 0b_000_0010, Mobile = 0b_000_0100 }
 }
