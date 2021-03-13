@@ -22,7 +22,11 @@ namespace Vecka03Miniproject01
             }
             private set { }     
         }
+        //--------------------- Constructor Chain --------------------------
+        public Office() : this(Location.UnitedStates)
+        {
 
+        }
         public Office(Location officeLocation)
         {
             OfficeLocation = officeLocation;

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Vecka03Miniproject01
 {
     
-    class Assets
+    public class Assets
     {
         public List<Asset> AllAssets { get; set; }
 

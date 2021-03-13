@@ -12,9 +12,12 @@ namespace Vecka03Miniproject01
     {
         static void Main(string[] args)
         {
-            Location allLocations = Location.GreatBritain | Location.Sweden | Location.UnitedStates;
+            /*Location allLocations = Location.GreatBritain | Location.Sweden | Location.UnitedStates;
             InputAndValidation.ReadAndValidate(out Location output, "Please write your location: " + allLocations);
-            Console.WriteLine(output);
+            Console.WriteLine(output);*/
+
+            
+
 
             /*
             var assets = new List<Asset>();

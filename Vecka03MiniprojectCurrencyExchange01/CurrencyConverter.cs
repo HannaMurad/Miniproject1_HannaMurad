@@ -23,7 +23,7 @@ namespace Vecka03MiniprojectCurrencyExchange01
         /// <summary>
         /// Get currency exchange rate in euro's 
         /// </summary>
-        public static float GetCurrencyRateInEuro(string currency)
+        public static decimal GetCurrencyRateInEuro(string currency)
         {
             if (currency.ToLower() == "")
                 throw new ArgumentException("Invalid Argument! currency parameter cannot be empty!");
@@ -57,7 +57,7 @@ namespace Vecka03MiniprojectCurrencyExchange01
                     try
                     {
                         // Get currency exchange rate with EURO from XMLNODE
-                        float exchangeRate = float.Parse(
+                        decimal exchangeRate = decimal.Parse(
                             node.SelectSingleNode("//cb:statistics//cb:exchangeRate//cb:value", nsmgr).InnerText,
                             NumberStyles.Any,
                             ci);
@@ -82,7 +82,7 @@ namespace Vecka03MiniprojectCurrencyExchange01
         /// <summary>
         /// Get The Exchange Rate Between 2 Currencies
         /// </summary>
-        public static float GetExchangeRate(string from, string to, float amount = 1)
+        public static decimal GetExchangeRate(string from, string to, decimal amount = 1D)
         {
             // If currency's are empty abort
             if (from == null || to == null)
@@ -95,8 +95,8 @@ namespace Vecka03MiniprojectCurrencyExchange01
             try
             {
                 // First Get the exchange rate of both currencies in euro
-                float toRate = GetCurrencyRateInEuro(to);
-                float fromRate = GetCurrencyRateInEuro(from);
+                decimal toRate = GetCurrencyRateInEuro(to);
+                decimal fromRate = GetCurrencyRateInEuro(from);
 
                 // Convert Between Euro to Other Currency
                 if (from.ToLower() == "eur")
