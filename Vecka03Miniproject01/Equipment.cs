@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Vecka03Miniproject01
 {
-    public class Equipment
+    public abstract class Equipment
     {
         public string ModelName { get; set; }
         public DateTime PurchaseDate { get; set; }
@@ -22,5 +22,7 @@ namespace Vecka03Miniproject01
             PurchaseDate = purchaseDate;
             PurchasePrice = purchasePrice;
         }
+        public abstract string GetEquipmentType();
+        
     }
 }

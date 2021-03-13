@@ -25,22 +25,25 @@ namespace Vecka03Miniproject01
             while(true)
             {
                 Console.WriteLine("Enter Assets Info, Enter to continue q to Quit");
-                if (Console.ReadLine().Trim().ToLower()[0] == 'q') break; 
-                
+                string input = Console.ReadLine().Trim().ToLower();
+                if (!string.IsNullOrWhiteSpace(input)) if (input[0] == 'q') break;
+
                 var asset = new Asset();
                 asset.ReadAsset();
                 AllAssets.Add(asset);
-            }
-            
+            }    
         }
         public void WriteAssetsToConsole()
         {
+            Console.BackgroundColor = ConsoleColor.DarkGray;
             Console.WriteLine(
+                "Asset Type".PadRight(15) +
                 "Model Name".PadRight(15) +
                 "Purchase Date".PadRight(15) +
                 "Local Price".PadRight(15) +
                 "Office Location".ToString().PadRight(15)
                 );
+            Console.ResetColor();
             foreach (var asset in AllAssets)
             {
                 asset.WriteAsset();
@@ -55,7 +58,5 @@ namespace Vecka03Miniproject01
         {
 
         }
-        
-
     }
 }

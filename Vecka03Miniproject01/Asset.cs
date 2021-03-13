@@ -40,7 +40,7 @@ namespace Vecka03Miniproject01
         }
 
         //----------- Constructor Chain------------------
-        public Asset() : this(new Equipment(), new Office())
+        public Asset() : this(new Desktop(), new Office())
         {
 
         }
@@ -79,6 +79,7 @@ namespace Vecka03Miniproject01
             CultureInfo.CurrentCulture = new CultureInfo(OfficeInfo.CultureName);
 
             Console.WriteLine(
+                EquipmentInfo.GetEquipmentType().PadRight(15) +
                 EquipmentInfo.ModelName.PadRight(15) +
                 EquipmentInfo.PurchaseDate.ToString("d").PadRight(15) +
                 LocalPrice.ToString("c").PadRight(15) +
