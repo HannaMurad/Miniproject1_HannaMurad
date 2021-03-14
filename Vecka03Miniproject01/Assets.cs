@@ -37,7 +37,7 @@ namespace Vecka03Miniproject01
         {
             Console.BackgroundColor = ConsoleColor.DarkGray;
             Console.WriteLine(
-                "Asset Type".PadRight(15) +
+                "Asset Type".PadRight(18) +
                 "Model Name".PadRight(15) +
                 "Purchase Date".PadRight(15) +
                 "Local Price".PadRight(15) +

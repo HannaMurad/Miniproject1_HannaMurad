@@ -103,7 +103,7 @@ namespace Vecka03Miniproject01
             CultureInfo.CurrentCulture = new CultureInfo(OfficeInfo.CultureName);
 
             Console.WriteLine(
-                EquipmentInfo.GetEquipmentType().PadRight(15) +
+                EquipmentInfo.GetEquipmentType().PadRight(18) +
                 EquipmentInfo.ModelName.PadRight(15) +
                 EquipmentInfo.PurchaseDate.ToString("d").PadRight(15) +
                 LocalPrice.ToString("c").PadRight(15) +
