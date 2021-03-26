@@ -27,7 +27,7 @@ namespace Domain
             } 
              set { }
         }
-        private EquipmentType type;
+        /*private EquipmentType type;
         public EquipmentType Type
         {
             get
@@ -41,7 +41,7 @@ namespace Domain
                 return type;
             }
             set { }
-        }
+        }*/
         //------------- Office Related Properties and Fields-----------------------
         public Office Office { get; set; }
 
@@ -119,7 +119,7 @@ namespace Domain
             CultureInfo.CurrentCulture = new CultureInfo(Office.CultureName);
 
             Console.WriteLine(
-                Type.ToString().PadRight(18) +
+                Equipment.GetType().ToString().PadRight(18) +
                 Equipment.ModelName.PadRight(15) +
                 Equipment.PurchaseDate.ToString("d").PadRight(15) +
                 LocalPrice.ToString("c").PadRight(15) +

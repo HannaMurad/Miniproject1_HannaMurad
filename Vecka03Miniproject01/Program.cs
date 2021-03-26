@@ -14,10 +14,12 @@ namespace Interface
 {
     class Program
     {
-        private static Context _context;
+        private static Context _context = new Context();
         static void Main(string[] args)
         {
-            //var assets = File.ReadAllLines("InitialData.csv").Select(ParseFromCsv);
+            var assets = File.ReadAllLines(@"..\..\..\InitialData.csv").Select(ParseFromCsv);
+            _context.Assets.AddRange(assets);
+            _context.SaveChanges();
             
 
             //var assets = new Assets();
@@ -29,12 +31,30 @@ namespace Interface
         public static Asset ParseFromCsv(string Line)
         {
             var columns = Line.Split(',');
-            return new Asset();
-            //return new Asset
-            //{
-            //    Type = (EquipmentType)Enum.Parse(EquipmentType, columns[0]),
-            //    Equipment = new 
-            //}
+
+            return new Asset
+            {
+                Equipment = CreateEquipmentfromCsv(columns[0], columns[1], columns[2], columns[3]),
+                Office = new Office((Location)Enum.Parse(typeof(Location), columns[4]))
+            };
+        }
+        public static Equipment CreateEquipmentfromCsv(string type, string modelName, string purchaseDate, string purchasePrise)
+        {
+            DateTime pd = DateTime.Parse(purchaseDate);
+            decimal pp = decimal.Parse(purchasePrise);
+
+            switch (type)
+            {
+                case "Desktop":
+                    return new Desktop(modelName, pd, pp);
+                case "Laptop":
+                    return new Laptop(modelName, pd, pp);
+                case "Mobile":
+                    return new Mobile(modelName, pd, pp);
+                default:
+                    return new Desktop(modelName, pd, pp);
+            }
+
         }
     }
 }

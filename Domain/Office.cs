@@ -22,7 +22,16 @@ namespace Domain
                 };
                 return currency;
             }
-            set { }     
+            set 
+            {
+                currency = value switch
+                {
+                    "GreatBritain" => "gbp",
+                    "Sweden" => "sek",
+                    "UnitedStates" => "usd",
+                    _ => "usd",
+                };  
+            }     
         }
         private string cultureName;
         public string CultureName { 
@@ -47,6 +56,8 @@ namespace Domain
         public Office(Location officeLocation)
         {
             OfficeLocation = officeLocation;
+            cultureName;
+            CultureInfo;
         }
 
     }
