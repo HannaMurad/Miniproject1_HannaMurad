@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Domain
 {
-    public class Equipment
+    public abstract class Equipment
     {
         public int Id { get; set; }
         public string ModelName { get; set; }
@@ -24,10 +24,8 @@ namespace Domain
             PurchaseDate = purchaseDate;
             PurchasePrice = purchasePrice;
         }
-        public virtual string GetEquipmentType()
-        {
-            return "";
-        }
+        public abstract string GetEquipmentType();
+        
     }
     
 }

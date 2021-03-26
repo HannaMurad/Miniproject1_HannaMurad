@@ -8,6 +8,9 @@ namespace Data
     {
         public DbSet<Asset> Assets { get; set; }
         public DbSet<Equipment> Equipments { get; set; }
+        public DbSet<Desktop> Desktops { get; set; }
+        public DbSet<Laptop> Laptops { get; set; }
+        public DbSet<Mobile> Mobiles { get; set; }
         public DbSet<Office> Offices { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

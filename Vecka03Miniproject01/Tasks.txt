@@ -1,11 +1,13 @@
 ﻿To Do:
 
 
+read from csv file to fill the database with some data
 
 
 Done:
 
 21-03-22
+create desktops, laptops, mobiles datasets and implement TPH (table per hierarchy), maybe implent TPT (table per type) later
 add migration init and create database
 add primary and foreign keys to Asset, Equipment and Office classes, relationship is one to one from Asset to Equipment and Office
 add context class to Data class library, and create Asset, Equipment and Office data sets, override OnConfiguring
