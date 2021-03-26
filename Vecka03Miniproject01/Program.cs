@@ -17,6 +17,8 @@ namespace Interface
         private static Context _context = new Context();
         static void Main(string[] args)
         {
+            
+            
             var assets = File.ReadAllLines(@"..\..\..\InitialData.csv").Select(ParseFromCsv);
             _context.Assets.AddRange(assets);
             _context.SaveChanges();
@@ -35,7 +37,8 @@ namespace Interface
             return new Asset
             {
                 Equipment = CreateEquipmentfromCsv(columns[0], columns[1], columns[2], columns[3]),
-                Office = new Office((Location)Enum.Parse(typeof(Location), columns[4]))
+                Office = new Office((Location)Enum.Parse(typeof(Location), columns[4])),
+                LocalPrice = decimal.Parse(columns[3])
             };
         }
         public static Equipment CreateEquipmentfromCsv(string type, string modelName, string purchaseDate, string purchasePrise)

@@ -46,7 +46,17 @@ namespace Domain
                 };
                 return cultureName;
             } 
-            set { } }
+            set 
+            {
+                cultureName = value switch
+                {
+                    "UnitedStates" => "en-GB",
+                    "Sweden" => "sv-SE",
+                    "GreatBritiain" => "en-US",
+                    _ => "en-US",
+                };
+            } 
+        }
         public int AssetId { get; set; }
         //--------------------- Constructor Chain --------------------------
         public Office() : this(Location.UnitedStates)
@@ -56,8 +66,8 @@ namespace Domain
         public Office(Location officeLocation)
         {
             OfficeLocation = officeLocation;
-            cultureName;
-            CultureInfo;
+            Currency = officeLocation.ToString();
+            CultureName = officeLocation.ToString();
         }
 
     }

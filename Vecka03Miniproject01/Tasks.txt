@@ -1,12 +1,16 @@
 ﻿To Do:
 
 
-issue: some comlums that are associated with calculated properties like "status" are filled with null
 
 
 Done:
 
 21-03-22
+
+
+fix: write calculations in set{//add calc here} and set the properties in the constructor
+issue: some comlums that are associated with calculated properties like "status" are filled with null
+
 read from csv file to fill the database with some data
 create desktops, laptops, mobiles datasets and implement TPH (table per hierarchy), maybe implent TPT (table per type) later
 add migration init and create database

@@ -52,7 +52,10 @@ namespace Domain
                 localPrice = CurrencyConverter.GetExchangeRate("usd", Office.Currency, Equipment.PurchasePrice);
                 return localPrice;
             } 
-            set { } 
+            set
+            {
+                localPrice = CurrencyConverter.GetExchangeRate("usd", Office.Currency, value); 
+            } 
         }
 
         //-------------------------------- Constructors -----------------------------------
@@ -64,6 +67,8 @@ namespace Domain
         {
             Equipment = equipmentInfo;
             Office = officeInfo;
+
+            //LocalPrice = Equipment.PurchasePrice;
         }
         public Asset(EquipmentType equipmentType, string modelName, DateTime purchaseDate, decimal purchasePrice, Location officeLocation)
         {
@@ -74,6 +79,8 @@ namespace Domain
             Equipment.PurchaseDate = purchaseDate;
             Equipment.PurchasePrice = purchasePrice;
             Office.OfficeLocation = officeLocation;
+
+            LocalPrice = purchasePrice;
         }
         //----------------------------------------------------------------------------------------
         private Equipment CreateEquipment(EquipmentType equipmentType)
