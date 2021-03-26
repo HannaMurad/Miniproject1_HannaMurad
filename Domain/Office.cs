@@ -22,7 +22,7 @@ namespace Domain
                 };
                 return currency;
             }
-            private set { }     
+            set { }     
         }
         private string cultureName;
         public string CultureName { 

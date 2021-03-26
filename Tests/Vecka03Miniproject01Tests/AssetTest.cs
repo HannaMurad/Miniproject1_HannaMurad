@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Vecka03Miniproject01;
+using Domain;
 using Xunit;
 
 namespace Vecka03Miniproject01Tests

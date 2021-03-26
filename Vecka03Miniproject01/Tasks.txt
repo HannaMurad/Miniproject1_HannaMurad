@@ -6,6 +6,7 @@
 Done:
 
 21-03-22
+add migration init and create database
 add primary and foreign keys to Asset, Equipment and Office classes, relationship is one to one from Asset to Equipment and Office
 add context class to Data class library, and create Asset, Equipment and Office data sets, override OnConfiguring
 install EF core libraries SqlServer and Tools from NuGet
