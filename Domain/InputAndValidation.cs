@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Vecka03Miniproject01
+namespace Domain
 {
     public static class InputAndValidation
     {

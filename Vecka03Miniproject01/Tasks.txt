@@ -1,10 +1,11 @@
 ﻿To Do:
 
-
+add primary and foreign keys to Asset, Equipment and Office classes, relationship is one to one from Asset to Equipment and Office
 
 
 Done:
 
 21-03-22
-organize classes in Data, Domain and Interface projects and make sure the app runs
+add context class to Data class library, and create Asset, Equipment and Office data sets, override OnConfiguring
 install EF core libraries SqlServer and Tools from NuGet
+organize classes in Data, Domain and Interface projects and make sure the app runs

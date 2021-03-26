@@ -4,7 +4,7 @@ using System.Text;
 using System.Globalization;
 using Vecka03MiniprojectCurrencyExchange01;
 
-namespace Vecka03Miniproject01
+namespace Domain
 {
     
     public class Asset

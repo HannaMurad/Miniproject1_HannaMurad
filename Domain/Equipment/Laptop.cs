@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Vecka03Miniproject01
+namespace Domain
 {
     public class Laptop : Equipment
     {

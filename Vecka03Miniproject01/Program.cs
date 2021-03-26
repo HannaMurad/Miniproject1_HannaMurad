@@ -7,9 +7,9 @@ using System.Xml.Serialization;
 using System.Linq;
 using System.IO;
 using System.Text;
-using Vecka03MiniprojectCurrencyExchange01;
+using Domain;
 
-namespace Vecka03Miniproject01
+namespace Interface
 {
     class Program
     {

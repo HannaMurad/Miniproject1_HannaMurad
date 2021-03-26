@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Globalization;
 
-namespace Vecka03Miniproject01
+namespace Domain
 {
     public class Office
     {
