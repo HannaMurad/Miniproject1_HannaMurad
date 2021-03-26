@@ -7,9 +7,11 @@ namespace Domain
 {
     public abstract class Equipment
     {
+        public int Id { get; set; }
         public string ModelName { get; set; }
         public DateTime PurchaseDate { get; set; }
         public decimal PurchasePrice { get; set; }
+        public int AssetId { get; set; }
 
         //------------------- Constructor Chain ---------------------
         public Equipment() : this(string.Empty, DateTime.Now, 0M)
@@ -24,6 +26,5 @@ namespace Domain
         }
         public abstract string GetEquipmentType();  
     }
-    [Flags] 
-    public enum EquipmentType { Desktop = 0b_0000_0001, Laptop = 0b_000_0010, Mobile = 0b_000_0100 }
+    
 }

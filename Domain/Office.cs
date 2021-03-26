@@ -7,6 +7,7 @@ namespace Domain
 {
     public class Office
     {
+        public int Id { get; set; }
         public Location OfficeLocation { get; set;}
         private string currency;
         public string Currency {
@@ -37,6 +38,7 @@ namespace Domain
                 return cultureName;
             } 
             set { } }
+        public int AssetId { get; set; }
         //--------------------- Constructor Chain --------------------------
         public Office() : this(Location.UnitedStates)
         {

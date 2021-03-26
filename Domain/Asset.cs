@@ -9,34 +9,50 @@ namespace Domain
     
     public class Asset
     {
+        public int Id { get; set; }
         //------------- Equipment Related Properties and Fields -------------------
-        public Equipment EquipmentInfo { get; private set; }
+        public Equipment Equipment { get; set; }
 
         private AssetStatus status;
         public AssetStatus Status { 
             get 
             {
-                if (DateTime.Compare(EquipmentInfo.PurchaseDate.AddMonths(33), DateTime.Now) <= 0)
+                if (DateTime.Compare(Equipment.PurchaseDate.AddMonths(33), DateTime.Now) <= 0)
                     status = AssetStatus.AlmostDepricated;
-                else if (DateTime.Compare(EquipmentInfo.PurchaseDate.AddMonths(30), DateTime.Now) <= 0)
+                else if (DateTime.Compare(Equipment.PurchaseDate.AddMonths(30), DateTime.Now) <= 0)
                     status = AssetStatus.SoonDepricated;
                 else status = AssetStatus.New;
 
                 return status;
             } 
-            private set { }
+             set { }
+        }
+        private EquipmentType type;
+        public EquipmentType Type
+        {
+            get
+            {
+                if (Equipment is Desktop)
+                    type = EquipmentType.Desktop;
+                else if (Equipment is Laptop)
+                    type = EquipmentType.Laptop;
+                else type = EquipmentType.Mobile;
+
+                return type;
+            }
+            set { }
         }
         //------------- Office Related Properties and Fields-----------------------
-        public Office OfficeInfo { get; private set; }
+        public Office Office { get; set; }
 
         private decimal localPrice;
         public decimal LocalPrice { 
             get 
             {
-                localPrice = CurrencyConverter.GetExchangeRate("usd", OfficeInfo.Currency, EquipmentInfo.PurchasePrice);
+                localPrice = CurrencyConverter.GetExchangeRate("usd", Office.Currency, Equipment.PurchasePrice);
                 return localPrice;
             } 
-            private set { } 
+            set { } 
         }
 
         //-------------------------------- Constructors -----------------------------------
@@ -46,18 +62,18 @@ namespace Domain
         }
         public Asset(Equipment equipmentInfo, Office officeInfo)
         {
-            EquipmentInfo = equipmentInfo;
-            OfficeInfo = officeInfo;
+            Equipment = equipmentInfo;
+            Office = officeInfo;
         }
         public Asset(EquipmentType equipmentType, string modelName, DateTime purchaseDate, decimal purchasePrice, Location officeLocation)
         {
-            EquipmentInfo = CreateEquipment(equipmentType);
-            OfficeInfo = new Office();
+            Equipment = CreateEquipment(equipmentType);
+            Office = new Office();
 
-            EquipmentInfo.ModelName = modelName;
-            EquipmentInfo.PurchaseDate = purchaseDate;
-            EquipmentInfo.PurchasePrice = purchasePrice;
-            OfficeInfo.OfficeLocation = officeLocation;
+            Equipment.ModelName = modelName;
+            Equipment.PurchaseDate = purchaseDate;
+            Equipment.PurchasePrice = purchasePrice;
+            Office.OfficeLocation = officeLocation;
         }
         //----------------------------------------------------------------------------------------
         private Equipment CreateEquipment(EquipmentType equipmentType)
@@ -80,34 +96,34 @@ namespace Domain
         {
             EquipmentType allEquipment = EquipmentType.Desktop | EquipmentType.Laptop | EquipmentType.Mobile;
             InputAndValidation.ReadAndValidate(out EquipmentType equipmentType, "Enter Equipment type " + allEquipment);
-            EquipmentInfo = CreateEquipment(equipmentType);
+            Equipment = CreateEquipment(equipmentType);
 
             InputAndValidation.ReadAndValidate(out string modelName, "Enter Model Name");
-            EquipmentInfo.ModelName = modelName;
+            Equipment.ModelName = modelName;
 
             InputAndValidation.ReadAndValidate(out DateTime purchaseDate, "Enter Purchase Date");
-            EquipmentInfo.PurchaseDate = purchaseDate;
+            Equipment.PurchaseDate = purchaseDate;
 
             InputAndValidation.ReadAndValidate(out decimal purchasePrice, "Enter Purchase Price");
-            EquipmentInfo.PurchasePrice = purchasePrice;
+            Equipment.PurchasePrice = purchasePrice;
 
             Location allLocations = Location.GreatBritain | Location.Sweden | Location.UnitedStates;
             InputAndValidation.ReadAndValidate(out Location officeLocation, "Enter Office Location " + allLocations);
-            OfficeInfo.OfficeLocation = officeLocation;
+            Office.OfficeLocation = officeLocation;
         }
             public void WriteAsset()
         {
             if (Status == AssetStatus.AlmostDepricated) Console.ForegroundColor = ConsoleColor.Red;
             else if (Status == AssetStatus.SoonDepricated) Console.ForegroundColor = ConsoleColor.Yellow;
 
-            CultureInfo.CurrentCulture = new CultureInfo(OfficeInfo.CultureName);
+            CultureInfo.CurrentCulture = new CultureInfo(Office.CultureName);
 
             Console.WriteLine(
-                EquipmentInfo.GetEquipmentType().PadRight(18) +
-                EquipmentInfo.ModelName.PadRight(15) +
-                EquipmentInfo.PurchaseDate.ToString("d").PadRight(15) +
+                Type.ToString().PadRight(18) +
+                Equipment.ModelName.PadRight(15) +
+                Equipment.PurchaseDate.ToString("d").PadRight(15) +
                 LocalPrice.ToString("c").PadRight(15) +
-                OfficeInfo.OfficeLocation.ToString().PadRight(15)
+                Office.OfficeLocation.ToString().PadRight(15)
                 );
 
             Console.ResetColor();
@@ -115,4 +131,6 @@ namespace Domain
     }
     [Flags]
     public enum AssetStatus { New = 0b_0000_0001, SoonDepricated = 0b_000_0010, AlmostDepricated = 0b_000_0100 }
+    [Flags]
+    public enum EquipmentType { Desktop = 0b_0000_0001, Laptop = 0b_000_0010, Mobile = 0b_000_0100 }
 }

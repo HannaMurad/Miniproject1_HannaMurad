@@ -17,7 +17,7 @@ namespace Interface
         {
             var assets = new Assets();
             assets.ReadAssetsFromConsole();
-            assets.AllAssets = assets.AllAssets.OrderBy(a => a.OfficeInfo.OfficeLocation).ThenBy(a => a.EquipmentInfo.PurchaseDate).ToList();
+            assets.AllAssets = assets.AllAssets.OrderBy(a => a.Office.OfficeLocation).ThenBy(a => a.Equipment.PurchaseDate).ToList();
             assets.WriteAssetsToConsole();
         }   
     }
