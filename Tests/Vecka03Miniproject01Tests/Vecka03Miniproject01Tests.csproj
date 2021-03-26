@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Vecka03Miniproject01\Vecka03Miniproject01.csproj" />
+    <ProjectReference Include="..\..\Vecka03Miniproject01\Interface.csproj" />
   </ItemGroup>
 
 </Project>
