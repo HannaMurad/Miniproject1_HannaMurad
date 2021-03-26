@@ -1,9 +1,10 @@
 ﻿To Do:
 
 
-install EF core libraries Sql and Tools from nuGet
+
 
 Done:
 
 21-03-22
-organize classe in Data, Domain and Interface projects and make sure the app runs
+organize classes in Data, Domain and Interface projects and make sure the app runs
+install EF core libraries SqlServer and Tools from NuGet
