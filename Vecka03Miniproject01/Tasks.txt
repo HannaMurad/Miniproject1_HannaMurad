@@ -1,12 +1,17 @@
 ﻿To Do:
 
-
+CRUD
+Create new asset
 
 
 Done:
 
-21-03-22
+21-03-27
+CRUD
+Read from database and write to console
 
+
+21-03-26
 
 fix: write calculations in set{//add calc here} and set the properties in the constructor
 issue: some comlums that are associated with calculated properties like "status" are filled with null

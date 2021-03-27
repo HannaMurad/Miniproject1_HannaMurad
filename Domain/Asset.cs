@@ -25,7 +25,14 @@ namespace Domain
 
                 return status;
             } 
-             set { }
+             set
+            {
+                if (DateTime.Compare(Equipment.PurchaseDate.AddMonths(33), DateTime.Now) <= 0)
+                    status = AssetStatus.AlmostDepricated;
+                else if (DateTime.Compare(Equipment.PurchaseDate.AddMonths(30), DateTime.Now) <= 0)
+                    status = AssetStatus.SoonDepricated;
+                else status = value;
+            }
         }
         /*private EquipmentType type;
         public EquipmentType Type
@@ -81,6 +88,7 @@ namespace Domain
             Office.OfficeLocation = officeLocation;
 
             LocalPrice = purchasePrice;
+            Status = AssetStatus.New;
         }
         //----------------------------------------------------------------------------------------
         private Equipment CreateEquipment(EquipmentType equipmentType)
@@ -117,6 +125,8 @@ namespace Domain
             Location allLocations = Location.GreatBritain | Location.Sweden | Location.UnitedStates;
             InputAndValidation.ReadAndValidate(out Location officeLocation, "Enter Office Location " + allLocations);
             Office.OfficeLocation = officeLocation;
+
+
         }
             public void WriteAsset()
         {
