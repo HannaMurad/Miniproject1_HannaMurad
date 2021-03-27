@@ -70,59 +70,41 @@ namespace Interface
             newAsset.ReadAsset();
             _context.Assets.Add(newAsset);
             _context.SaveChanges();
-            Console.WriteLine("asset has been added");
+            Console.WriteLine("operation complete!");
         }
         public static void Delete()
-        {
-            var ids = _context.Assets.Select(a => a.Id).ToList();
-            foreach (var id in ids) Console.Write(id.ToString().PadRight(4));
-
-            bool loop = true;
-            while (loop)
-            {
-                InputAndValidation.ReadAndValidate(out int selectedID, "\n\rEnter Asset ID you want to delete");
-
-                foreach (var id in ids)
-                {
-                    if (id == selectedID)
-                    {
-                        var oldAsset = _context.Assets.SingleOrDefault(a => a.Id == selectedID);
-                        
-                        _context.Assets.Remove(oldAsset);
-                        _context.SaveChanges();
-                        loop = false;
-                    }
-                }
-                if (loop == true) Console.WriteLine("please write one of the listed IDs");
-
-            }
-            Console.WriteLine("asset has been deleted");
+        {  
+            var oldAsset = _context.Assets.SingleOrDefault(a => a.Id == ReadIdFromConsole());         
+            _context.Assets.Remove(oldAsset);
+            _context.SaveChanges();             
+            Console.WriteLine("operation complete!");
         }
         public static void Update()
+        {  
+            var asset = _context.Assets.Where(a => a.Id == ReadIdFromConsole()).Include(a => a.Equipment).Include(a => a.Office).SingleOrDefault();
+            InputAndValidation.ReadAndValidate(out string newModel, "enter new model");
+            asset.Equipment.ModelName = newModel;
+            _context.SaveChanges();
+            Console.WriteLine("operation complete!");
+        }
+        public static int ReadIdFromConsole()
         {
             var ids = _context.Assets.Select(a => a.Id).ToList();
             foreach (var id in ids) Console.Write(id.ToString().PadRight(4));
 
-            bool loop = true;
-            while (loop)
+            while (true)
             {
-                InputAndValidation.ReadAndValidate(out int selectedID, "\n\rEnter Asset ID you want to update");
+                InputAndValidation.ReadAndValidate(out int selectedID, "\n\rEnter Asset ID");
 
                 foreach (var id in ids)
                 {
                     if (id == selectedID)
                     {
-                        var asset = _context.Assets.Where(a => a.Id == selectedID).Include(a => a.Equipment).Include(a => a.Office).SingleOrDefault();
-                        InputAndValidation.ReadAndValidate(out string newModel, "enter new model");
-                        asset.Equipment.ModelName = newModel;
-                        _context.SaveChanges();
-                        loop = false;
+                        return selectedID;
                     }
                 }
-                if (loop == true) Console.WriteLine("please write one of the listed IDs");
-
+                Console.WriteLine("please write one of the listed IDs");
             }
-            Console.WriteLine("asset has been updated");
         }
         public static Asset ParseFromCsv(string Line)
         {
