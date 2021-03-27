@@ -1,21 +1,22 @@
 ﻿To Do:
 
-refactoring
+refactoring: 
 
 
 Done:
 
 21-03-27
 
-add logging
+* refactoring: put CRUD in methods
+* add logging
 CRUD
-Update an asset
+* Update an asset
 CRUD
-Delete an asset
+* Delete an asset
 CRUD
-Create new asset
+* Create new asset
 CRUD
-Read from database and write to console
+* Read from database and write to console
 
 
 21-03-26

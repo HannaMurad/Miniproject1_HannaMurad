@@ -52,6 +52,16 @@ namespace Domain
             }     
         }
 
+        public static void ReadAndValidate(out int output, string message)
+        {
+            while (true)
+            {
+                Console.WriteLine(message);
+                if (int.TryParse(Console.ReadLine().Trim(), out output)) return;
+                else Console.WriteLine("Wrong Format");
+            }
+        }
+
         public static void ReadAndValidate(out DateTime output, string message)
         {
             while (true)
