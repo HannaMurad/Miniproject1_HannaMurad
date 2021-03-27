@@ -109,10 +109,12 @@ namespace Domain
         //------------------------ read and write asset to console ------------------------------
         public void ReadAsset()
         {
+            // init equipment
             EquipmentType allEquipment = EquipmentType.Desktop | EquipmentType.Laptop | EquipmentType.Mobile;
             InputAndValidation.ReadAndValidate(out EquipmentType equipmentType, "Enter Equipment type " + allEquipment);
             Equipment = CreateEquipment(equipmentType);
 
+            //read properties
             InputAndValidation.ReadAndValidate(out string modelName, "Enter Model Name");
             Equipment.ModelName = modelName;
 
@@ -126,7 +128,12 @@ namespace Domain
             InputAndValidation.ReadAndValidate(out Location officeLocation, "Enter Office Location " + allLocations);
             Office.OfficeLocation = officeLocation;
 
+            //calculated properties
+            Office.Currency = officeLocation.ToString();
+            Office.CultureName = officeLocation.ToString();
 
+            LocalPrice = purchasePrice;
+            Status = AssetStatus.New;
         }
             public void WriteAsset()
         {

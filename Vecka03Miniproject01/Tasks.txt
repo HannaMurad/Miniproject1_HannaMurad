@@ -1,12 +1,14 @@
 ﻿To Do:
 
 CRUD
-Create new asset
+Delete an asset
 
 
 Done:
 
 21-03-27
+CRUD
+Create new asset
 CRUD
 Read from database and write to console
 

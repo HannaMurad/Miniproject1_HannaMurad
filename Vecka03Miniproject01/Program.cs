@@ -34,6 +34,9 @@ namespace Interface
 
             // CRUD Create
             var newAsset = new Asset();
+            newAsset.ReadAsset();
+            _context.Assets.Add(newAsset);
+            _context.SaveChanges();
 
 
 
