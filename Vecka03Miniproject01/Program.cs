@@ -18,29 +18,38 @@ namespace Interface
         private static Context _context = new Context();
         static void Main(string[] args)
         {
-
             // Seed from csv
             //Seed();
 
-            // CRUD Read
-            Read();
-
-            // CRUD Create
-            //Create();
-
-            // CRUD Delete
-            //Delete();
-
-            //CRUD Update
-            //Update();
-
+            while (true)
+            {
+                Console.WriteLine("1. Read \n\r2. Add \n\r3. Delete \n\r4. Update\n\r5. Quit");
+                InputAndValidation.ReadAndValidate(out int option, "write the option relevant number");
+                
+                switch (option)
+                {
+                    case 1:
+                        Read();
+                        break;
+                    case 2:
+                        Create();
+                        break;
+                    case 3:
+                        Delete();
+                        break;
+                    case 4:
+                        Update();
+                        break;
+                    default:
+                        return;
+                }
+            }
 
             // Miniproject 1
             //var assets = new Assets();
             //assets.ReadAssetsFromConsole();
             //assets.AllAssets = assets.AllAssets.OrderBy(a => a.Office.OfficeLocation).ThenBy(a => a.Equipment.PurchaseDate).ToList();
             //assets.WriteAssetsToConsole();
-
         }
         public static void Seed()
         {
@@ -78,12 +87,13 @@ namespace Interface
                     if (id == selectedID)
                     {
                         var oldAsset = _context.Assets.SingleOrDefault(a => a.Id == selectedID);
+                        
                         _context.Assets.Remove(oldAsset);
                         _context.SaveChanges();
                         loop = false;
                     }
                 }
-                if (loop == true) Console.WriteLine("please write in one of the listed IDs");
+                if (loop == true) Console.WriteLine("please write one of the listed IDs");
 
             }
             Console.WriteLine("asset has been deleted");
@@ -109,7 +119,7 @@ namespace Interface
                         loop = false;
                     }
                 }
-                if (loop == true) Console.WriteLine("please write in one of the listed IDs");
+                if (loop == true) Console.WriteLine("please write one of the listed IDs");
 
             }
             Console.WriteLine("asset has been updated");
@@ -142,7 +152,6 @@ namespace Interface
                 default:
                     return new Desktop(modelName, pd, pp);
             }
-
         }
     }
 }
