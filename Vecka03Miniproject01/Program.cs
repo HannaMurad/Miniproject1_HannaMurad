@@ -68,32 +68,32 @@ namespace Interface
 
 
             //CRUD Update
-            var ids = _context.Assets.Select(a => a.Id).ToList();
-            foreach (var id in ids) Console.Write(id.ToString().PadRight(4));
+            //var ids = _context.Assets.Select(a => a.Id).ToList();
+            //foreach (var id in ids) Console.Write(id.ToString().PadRight(4));
 
-            bool loop = true;
-            while (loop)
-            {
-                Console.WriteLine("\n\rEnter Asset ID you want to update");
+            //bool loop = true;
+            //while (loop)
+            //{
+            //    Console.WriteLine("\n\rEnter Asset ID you want to update");
 
-                if (int.TryParse(Console.ReadLine(), out int result))
-                {
-                    foreach (var id in ids)
-                    {
-                        if (id == result)
-                        {
-                            var asset = _context.Assets.Where(a => a.Id == result).Include(a => a.Equipment).Include(a => a.Office).SingleOrDefault();
-                            InputAndValidation.ReadAndValidate(out string newModel, "enter new model");
-                            asset.Equipment.ModelName = newModel;
-                            _context.SaveChanges();
-                            loop = false;
-                        }
-                    }
-                    if (loop == true) Console.WriteLine("please write in one of the listed IDs");
-                }
-                else Console.WriteLine("please write a number");
-            }
-            Console.WriteLine("asset has been updated");
+            //    if (int.TryParse(Console.ReadLine(), out int result))
+            //    {
+            //        foreach (var id in ids)
+            //        {
+            //            if (id == result)
+            //            {
+            //                var asset = _context.Assets.Where(a => a.Id == result).Include(a => a.Equipment).Include(a => a.Office).SingleOrDefault();
+            //                InputAndValidation.ReadAndValidate(out string newModel, "enter new model");
+            //                asset.Equipment.ModelName = newModel;
+            //                _context.SaveChanges();
+            //                loop = false;
+            //            }
+            //        }
+            //        if (loop == true) Console.WriteLine("please write in one of the listed IDs");
+            //    }
+            //    else Console.WriteLine("please write a number");
+            //}
+            //Console.WriteLine("asset has been updated");
 
 
             // Miniproject 1

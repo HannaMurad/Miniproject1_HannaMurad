@@ -1,12 +1,13 @@
 ﻿To Do:
 
-add logging
+refactoring
 
 
 Done:
 
 21-03-27
 
+add logging
 CRUD
 Update an asset
 CRUD
