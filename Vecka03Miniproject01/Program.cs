@@ -40,13 +40,41 @@ namespace Interface
             // Console.WriteLine("asset has been added");
 
             // CRUD Delete
+            //var ids = _context.Assets.Select(a => a.Id).ToList();
+            //foreach (var id in ids) Console.Write(id.ToString().PadRight(4));
+
+            //bool loop = true;
+            //while(loop)
+            //{
+            //    Console.WriteLine("\n\rEnter Asset ID you want to delete");
+
+            //    if (int.TryParse(Console.ReadLine(), out int result))
+            //    {
+            //        foreach (var id in ids)
+            //        {
+            //            if (id == result)
+            //            {
+            //                var oldAsset = _context.Assets.SingleOrDefault(a => a.Id == result);
+            //                _context.Assets.Remove(oldAsset);
+            //                _context.SaveChanges();
+            //                loop = false;
+            //            }
+            //        }
+            //        if (loop == true) Console.WriteLine("please write in one of the listed IDs");
+            //    }
+            //    else Console.WriteLine("please write a number");
+            //}
+            //Console.WriteLine("asset has been deleted");
+
+
+            //CRUD Update
             var ids = _context.Assets.Select(a => a.Id).ToList();
             foreach (var id in ids) Console.Write(id.ToString().PadRight(4));
 
             bool loop = true;
-            while(loop)
+            while (loop)
             {
-                Console.WriteLine("\n\rEnter Asset ID you want to delete");
+                Console.WriteLine("\n\rEnter Asset ID you want to update");
 
                 if (int.TryParse(Console.ReadLine(), out int result))
                 {
@@ -54,19 +82,18 @@ namespace Interface
                     {
                         if (id == result)
                         {
-                            var oldAsset = _context.Assets.SingleOrDefault(a => a.Id == result);
-                            _context.Assets.Remove(oldAsset);
+                            var asset = _context.Assets.Where(a => a.Id == result).Include(a => a.Equipment).Include(a => a.Office).SingleOrDefault();
+                            InputAndValidation.ReadAndValidate(out string newModel, "enter new model");
+                            asset.Equipment.ModelName = newModel;
                             _context.SaveChanges();
                             loop = false;
                         }
                     }
-                    if (loop == true) Console.WriteLine("please wrinte in one of the listed IDs");
+                    if (loop == true) Console.WriteLine("please write in one of the listed IDs");
                 }
                 else Console.WriteLine("please write a number");
             }
-            Console.WriteLine("asset has been deleted");
-
-
+            Console.WriteLine("asset has been updated");
 
 
             // Miniproject 1
