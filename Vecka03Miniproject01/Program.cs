@@ -33,15 +33,43 @@ namespace Interface
 
 
             // CRUD Create
-            var newAsset = new Asset();
-            newAsset.ReadAsset();
-            _context.Assets.Add(newAsset);
-            _context.SaveChanges();
+            //var newAsset = new Asset();
+            //newAsset.ReadAsset();
+            //_context.Assets.Add(newAsset);
+            //_context.SaveChanges();
+            // Console.WriteLine("asset has been added");
+
+            // CRUD Delete
+            var ids = _context.Assets.Select(a => a.Id).ToList();
+            foreach (var id in ids) Console.Write(id.ToString().PadRight(4));
+
+            bool loop = true;
+            while(loop)
+            {
+                Console.WriteLine("\n\rEnter Asset ID you want to delete");
+
+                if (int.TryParse(Console.ReadLine(), out int result))
+                {
+                    foreach (var id in ids)
+                    {
+                        if (id == result)
+                        {
+                            var oldAsset = _context.Assets.SingleOrDefault(a => a.Id == result);
+                            _context.Assets.Remove(oldAsset);
+                            _context.SaveChanges();
+                            loop = false;
+                        }
+                    }
+                    if (loop == true) Console.WriteLine("please wrinte in one of the listed IDs");
+                }
+                else Console.WriteLine("please write a number");
+            }
+            Console.WriteLine("asset has been deleted");
 
 
 
 
-
+            // Miniproject 1
             //var assets = new Assets();
             //assets.ReadAssetsFromConsole();
             //assets.AllAssets = assets.AllAssets.OrderBy(a => a.Office.OfficeLocation).ThenBy(a => a.Equipment.PurchaseDate).ToList();

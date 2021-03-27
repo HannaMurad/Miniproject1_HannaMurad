@@ -1,12 +1,15 @@
 ﻿To Do:
 
 CRUD
-Delete an asset
+Update an asset
 
 
 Done:
 
 21-03-27
+
+CRUD
+Delete an asset
 CRUD
 Create new asset
 CRUD
