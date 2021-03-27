@@ -37,8 +37,8 @@ namespace Domain
         {
             Console.BackgroundColor = ConsoleColor.DarkGray;
             Console.WriteLine(
-                "Asset Type".PadRight(18) +
-                "Model Name".PadRight(15) +
+                "Type".PadRight(12) +
+                "Model".PadRight(12) +
                 "Purchase Date".PadRight(15) +
                 "Local Price".PadRight(15) +
                 "Office Location".ToString().PadRight(15)

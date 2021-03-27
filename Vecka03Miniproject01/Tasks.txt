@@ -5,11 +5,12 @@ add more functionality: show the user a column and let them choose one item
 create crud class
 see if you need to create extension methods
 save date in short form to database
-remove domain from asset type
+
 
 
 Done:
 
+* remove domain from asset type
 21-03-27
 * add main menu with -Read Add Delete Update- Options
 * refactoring: put CRUD in methods

@@ -143,8 +143,8 @@ namespace Domain
             CultureInfo.CurrentCulture = new CultureInfo(Office.CultureName);
 
             Console.WriteLine(
-                Equipment.GetType().ToString().PadRight(18) +
-                Equipment.ModelName.PadRight(15) +
+                Equipment.GetType().Name.PadRight(12) +
+                Equipment.ModelName.PadRight(12) +
                 Equipment.PurchaseDate.ToString("d").PadRight(15) +
                 LocalPrice.ToString("c").PadRight(15) +
                 Office.OfficeLocation.ToString().PadRight(15)
